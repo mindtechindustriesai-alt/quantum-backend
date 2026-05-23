@@ -18,16 +18,13 @@ app = FastAPI(
     version="2.0.0"
 )
 
-# CORS - Allow all frontend domains
+# ============================================================
+# CORS - Allow ALL frontend domains (temporary fix)
+# Then restrict later for production
+# ============================================================
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:8000",
-        "http://localhost:5500",
-        "https://*.onrender.com",
-        "https://*.netlify.app",
-        "https://*.github.io"
-    ],
+    allow_origins=["*"],  # Allows ALL domains (temporary - change later)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
